@@ -1,0 +1,57 @@
+!!! 5
+%html
+  %head
+    %title
+      CLNDR.js Sample
+    %link(type="text/css" href="css/main.css" rel="stylesheet")
+  %body
+    .cal
+      %script(type="text/template" id="template-calendar")
+        .clndr-controls
+          .clndr-previous-button
+            &lsaquo;
+          .month
+            <%= month %>
+          .clndr-next-button
+            &rsaquo;
+        .clndr-grid
+          .days-of-the-week
+            <% _.each(daysOfTheWeek, function(day) { %>
+            .header-day
+              <%= day %>
+            <% }); %>
+          .days
+            <% _.each(days, function(day) { %>
+            :plain
+              <div class="<%= day.classes %>" id="<%= day.id %>">
+                <%= day.day %>
+              </div>
+            <% }); %>
+    %script(src="js/jquery.min.js")
+    %script(src="js/moment.min.js")
+    %script(src="js/underscore.min.js")
+    %script(src="js/clndr.min.js")
+    :javascript
+      $(document).ready( function() {
+        var thisMonth = moment().format('YYYY-MM');
+        var clndr = $('.cal').clndr({
+          template: $('#template-calendar').html(),
+          startsWithMonth: moment().add('month', 0),
+          clickEvents: {
+            click: function(target) {
+              console.log(target);
+            }
+          }
+        });
+
+        $(document).keydown( function(e) {
+          if(e.keyCode == 37){
+            // left arrow
+            clndr.back();
+          }
+          if(e.keyCode == 39){
+            // right arrow
+            clndr.forward();
+          }
+        });
+      });

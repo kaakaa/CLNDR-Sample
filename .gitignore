@@ -1,0 +1,4 @@
+.git
+vendor/
+.sass-cache/
+.bundle/

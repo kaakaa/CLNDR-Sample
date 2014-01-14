@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      CLNDR.js Sample
+    </title>
+    <link href='css/main.css' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class='cal'>
+      <script id='template-calendar' type='text/template'>
+        <div class='clndr-controls'>
+          <div class='clndr-previous-button'>
+            &lsaquo;
+          </div>
+          <div class='month'>
+            <%= month %>
+          </div>
+          <div class='clndr-next-button'>
+            &rsaquo;
+          </div>
+        </div>
+        <div class='clndr-grid'>
+          <div class='days-of-the-week'>
+            <% _.each(daysOfTheWeek, function(day) { %>
+            <div class='header-day'>
+              <%= day %>
+            </div>
+            <% }); %>
+          </div>
+          <div class='days'>
+            <% _.each(days, function(day) { %>
+            <div class="<%= day.classes %>" id="<%= day.id %>">
+              <%= day.day %>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+      </script>
+    </div>
+    <script src='js/jquery.min.js'></script>
+    <script src='js/moment.min.js'></script>
+    <script src='js/underscore.min.js'></script>
+    <script src='js/clndr.min.js'></script>
+    <script>
+      $(document).ready( function() {
+        var thisMonth = moment().format('YYYY-MM');
+        var clndr = $('.cal').clndr({
+          template: $('#template-calendar').html(),
+          startsWithMonth: moment().add('month', 0),
+          clickEvents: {
+            click: function(target) {
+              console.log(target);
+            }
+          }
+        });
+      
+        $(document).keydown( function(e) {
+          if(e.keyCode == 37){
+            // left arrow
+            clndr.back();
+          }
+          if(e.keyCode == 39){
+            // right arrow
+            clndr.forward();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
+.clearfix {
+	display: inline-block;
+	&:after {
+		content: ".";
+		display: block;
+		clear: both;
+		visibility: hidden;
+		line-height: 0;
+		height: 0;
+	}
+}
+html[xmlns] .clearfix {
+	display: block;
+}
+* html .clearfix {
+	height: 1%;
+}
+.noselect {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.cal {
+	max-width: 177px;
+	margin: 0 auto;
+	font-family: 'Droid Sans Mono';
+	.clndr .clndr-controls {
+		display: block;
+		display: inline-block;
+		width: 100%;
+		margin-bottom: 3px;
+		.clndr-previous-button {
+			float: left;
+			width: 10%;
+			text-align: left;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-juser-select: none;
+			&:hover {
+				background-color: #f4f4f4;
+			}
+		}
+		.month {
+			float: left;
+			width: 80%;
+			text-align: center;
+		}
+		.clndr-next-button {
+			float: left;
+			width: 10%;
+			text-align: right;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			&:hover {
+				background-color: #f4f4f4;
+			}
+		}
+	}
+	.clndr .clndr-grid {
+		text-align: center;
+		border: 1px solid #FF4545;
+		display: inline-block;
+		.header-day {
+			float: left;
+			width: 25px;
+			height: 25px;
+			background: #FF4545;
+		}
+		.day {
+			float: left;
+			width: 25px;
+			height: 25px;
+		}
+		.day.event {
+			background-color: #B4E09F;
+		}
+		.day.today {
+			background-color: #E3C57F;
+		}
+		.empty {
+			float: left;
+			width: 25px;
+			height: 25px;
+			background: #ddd;
+		}
+	}
+}
