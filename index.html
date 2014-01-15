@@ -46,8 +46,9 @@
     <script src='js/loadevent.js'></script>
     <script>
       $(document).ready( function() {
-        var thisMonth = moment().format('YYYY-MM');
-        var eventList = loadEvent();
+        var thisYear = moment().format('YYYY');
+        var thisMonth = moment().format('MM');
+        var eventList = loadEvent(thisYear, thisMonth);
         var clndr = $('.cal').clndr({
           template: $('#template-calendar').html(),
           events: eventList,

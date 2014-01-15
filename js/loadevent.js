@@ -1,7 +1,8 @@
-function loadEvent() {
+function loadEvent(year, month) {
 	httpObj = createXMLHttpRequest(displayData);
+	var fName = "events/" + year + "/" + month + ".json";
 	if (httpObj && 'open' in httpObj) {
-		httpObj.open("GET", "./events/sample.json", false);
+		httpObj.open("GET", fName, false);
 		httpObj.send(null);
 	} else {
 		window.alert("Opening file is denied.");
