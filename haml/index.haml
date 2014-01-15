@@ -31,11 +31,15 @@
     %script(src="js/moment.min.js")
     %script(src="js/underscore.min.js")
     %script(src="js/clndr.min.js")
+    %script(src="js/xmlhttp.js")
+    %script(src="js/loadevent.js")
     :javascript
       $(document).ready( function() {
         var thisMonth = moment().format('YYYY-MM');
+        var eventList = loadEvent();
         var clndr = $('.cal').clndr({
           template: $('#template-calendar').html(),
+          events: eventList,
           startsWithMonth: moment().add('month', 0),
           clickEvents: {
             click: function(target) {
