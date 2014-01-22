@@ -7,6 +7,12 @@
     <link href='css/main.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
+    <a href='http://google.com'>
+      Master Google
+    </a>
+    <a href='javascript:void(0)' onClick='addEvent()'>
+      Test
+    </a>
     <div class='cal'>
       <script id='template-calendar' type='text/template'>
         <div class='clndr-controls'>
@@ -28,7 +34,7 @@
             </div>
             <% }); %>
           </div>
-          <div class='days'>
+          <div class='days' ondragover='onDragOver(event)' ondrop='onDrop(event)'>
             <% _.each(days, function(day) { %>
             <div class="<%= day.classes %>" id="<%= day.id %>">
               <%= day.day %>
@@ -44,6 +50,7 @@
     <script src='js/clndr.min.js'></script>
     <script src='js/xmlhttp.js'></script>
     <script src='js/loadevent.js'></script>
+    <script src='js/ddregist.js'></script>
     <script>
       $(document).ready( function() {
         var thisYear = moment().format('YYYY');
@@ -71,6 +78,15 @@
           }
         });
       });
+    </script>
+    <script>
+      function addEvent(){
+        console.log("call php");
+        $.ajax({
+          type: "GET",
+          url: "/test.php",
+        });
+      };
     </script>
   </body>
 </html>

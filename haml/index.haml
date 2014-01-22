@@ -5,6 +5,10 @@
       CLNDR.js Sample
     %link(type="text/css" href="css/main.css" rel="stylesheet")
   %body
+    %a(href="http://google.com")
+      Master Google
+    %a(href="javascript:void(0)" onClick="addEvent()")
+      Test
     .cal
       %script(type="text/template" id="template-calendar")
         .clndr-controls
@@ -20,7 +24,7 @@
             .header-day
               <%= day %>
             <% }); %>
-          .days
+          .days(ondragover="onDragOver(event)" ondrop="onDrop(event)")
             <% _.each(days, function(day) { %>
             :plain
               <div class="<%= day.classes %>" id="<%= day.id %>">
@@ -33,6 +37,7 @@
     %script(src="js/clndr.min.js")
     %script(src="js/xmlhttp.js")
     %script(src="js/loadevent.js")
+    %script(src="js/ddregist.js")
     :javascript
       $(document).ready( function() {
         var thisYear = moment().format('YYYY');
@@ -60,3 +65,11 @@
           }
         });
       });
+    :javascript
+      function addEvent(){
+        console.log("call php");
+        $.ajax({
+          type: "GET",
+          url: "/test.php",
+        });
+      };

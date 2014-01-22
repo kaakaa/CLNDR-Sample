@@ -7,7 +7,8 @@ function loadEvent(year, month) {
 	} else {
 		window.alert("Opening file is denied.");
 	}
-	return JSON.parse(httpObj.responseText);
+	console.log(httpObj.responseText);
+	return JSON.parse("[" + httpObj.responseText + "]");
 }
 
 function displayData() {
